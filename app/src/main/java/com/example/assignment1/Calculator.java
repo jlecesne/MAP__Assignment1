@@ -15,9 +15,12 @@ public class Calculator {
     int total;
 
     public Calculator() {
+        //Initializes to error code
         total = -433;
         calculation= new ArrayList<String>();
     }
+
+    //
     void push(String value) {
         if(!value.isEmpty()) {
             calculation = new ArrayList<String>(Arrays.asList(value.split(" ")));
@@ -36,14 +39,15 @@ public class Calculator {
         boolean flag2=true;
         total = -433;
 
+        //Checks is ArrayList is empty
         if(calculation.isEmpty()) {
-            Log.d("TESTING", "MOMOMO");
+            Log.d("TESTING", "EMPTY CALCULATION");
             return total;
         } else {
+            //Loop runs as long as there are values in the ArrayList
             while (!calculation.isEmpty()) {
-                System.out.println(calculation);
                 if (flag2) {
-                    //Get first number
+                    //Get first number and checks validity
                     flag = checkNumber();
                     if (!flag) {
                         System.out.println("Not an operator");
@@ -54,7 +58,7 @@ public class Calculator {
                         calculation.remove(0);
                     }
 
-                    //Get Operand
+                    //Get Operand and checks validity
                     operand = checkOperand();
                     if (operand == 0) {
                         System.out.println("Not an operator");
@@ -62,7 +66,7 @@ public class Calculator {
                         break;
                     }
 
-                    //Get second number
+                    //Get second number and checks validity
                     flag = checkNumber();
                     if (!flag) {
                         System.out.println("Not an operator");
@@ -76,7 +80,9 @@ public class Calculator {
                     //Calculate Total
                     total = calculateTotal(f1, operand, f2);
                     flag2 = false;
-                } else {
+                }
+                //Only runs after first iteration of loop. Takes the next two values in ArrayList, repeating validity checks
+                else {
                     //Get operand
                     operand = checkOperand();
                     if (operand == 0) {
@@ -85,23 +91,24 @@ public class Calculator {
                         break;
                     }
 
-
                     //Get Number
                     flag = checkNumber();
                     if (!flag) {
                         System.out.println("Not an operator");
                         total = -433;
                         break;
-                    } else {
+                    } else {            //Number Valid
                         f2 = Integer.parseInt(calculation.get(0));
                         calculation.remove(0);
                     }
 
+                    //Tries to calculate the total with the total, and validated operand and number
                     total=calculateTotal(total, operand, f2);
                     flag2=false;
 
                 }
 
+                //reset values
                 f1=0;
                 f2=0;
                 operand=0;
@@ -113,6 +120,7 @@ public class Calculator {
 
     }
 
+    //Carries out and returns calculations
     int calculateTotal(int f1, int operand, int f2) {
         switch (operand) {
             case 1:
@@ -125,6 +133,10 @@ public class Calculator {
                 return f1*f2;
 
             case 4:
+                //Ensures that user cannot divide by 0
+                if (f2==0) {
+                    return -433;
+                }
                 return f1/f2;
 
             case 5:
@@ -147,6 +159,7 @@ public class Calculator {
         return -1;
 
     }
+    //Validates that value is a number and returns boolean
     boolean checkNumber() {
         if(calculation.isEmpty()) {
             return false;
@@ -161,6 +174,7 @@ public class Calculator {
         return true;
     }
 
+    //Validates that value is an operand and returns unique id for each
     int checkOperand() {
         if(calculation.isEmpty()) {
             return 0;
@@ -193,11 +207,11 @@ public class Calculator {
                     calculation.remove(0);
                     return 6;
 
-                case "max":
+                case "Max":
                     calculation.remove(0);
                     return 7;
 
-                case "min":
+                case "Min":
                     calculation.remove(0);
                     return 8;
 

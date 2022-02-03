@@ -4,25 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import android.os.Bundle;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener {
 
     Calculator c1 = new Calculator();
+
+    //View for handling numbers and operation
     TextView operation;
     boolean flag=true;
 
@@ -54,6 +49,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Sets up on click listeners for all buttons
         setupListeners(savedInstanceState);
     }
 
@@ -61,8 +57,9 @@ public class MainActivity extends AppCompatActivity
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        int id=view.getId();
 
+        //Gets id of any button clicked and adds a value to the TextView based on ID
+        int id=view.getId();
         switch (id) {
             case R.id.btn0:
                 operation.setText(operation.getText()+"0 ");
@@ -122,15 +119,20 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.btnClr:
                 operation.setText("");
+                c1.total=-433;
+                c1.calculation.clear();
                 break;
 
+            //Hides/Reveals scientific operands
             case R.id.btnAdvanced:
                 if(flag) {
                     scientific.setVisibility(View.VISIBLE);
+                    advance.setText("STANDARD");
                     flag=false;
                 }
                 else {
                     scientific.setVisibility(View.INVISIBLE);
+                    advance.setText("ADVANCE - SCIENTIFIC");
                     flag=true;
                 }
 
@@ -154,10 +156,13 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.btnEqual:
 
+                //Pushes TextView items into an arraylist
                 c1.push(operation.getText().toString());
 
-                Integer value = c1.calculate();
+                //Calculates result of ArrayList
+                int value = c1.calculate();
                 System.out.println(value + "hi");
+                //-433 is the unique integer for an an error in the calculation whether that is an invalid operand or invalid number
                 if(value==-433) {
                     operation.setText(operation.getText()+"Not an Operator");
                 }
@@ -167,12 +172,14 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
 
+        //Reset total
         c1.total = 0;
 
 
     }
 
 
+    //Setups on click listeners for all buttons
     public void setupListeners(Bundle savedInstanceState) {
 
         num0=findViewById(R.id.btn0);
@@ -239,8 +246,6 @@ public class MainActivity extends AppCompatActivity
         min.setOnClickListener(this);
 
         scientific =  findViewById(R.id.layoutScientific);
-
-
-        operation = (TextView) findViewById(R.id.calculation);
+        operation = findViewById(R.id.calculation);
     }
 }
