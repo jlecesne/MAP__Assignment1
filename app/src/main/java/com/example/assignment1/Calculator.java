@@ -46,6 +46,7 @@ public class Calculator {
                     flag = checkNumber();
                     if (!flag) {
                         System.out.println("Not an operator");
+                        total =-1;
                         break;
                     } else {
                         f1 = Integer.parseInt(calculation.get(0));
@@ -56,6 +57,7 @@ public class Calculator {
                     operand = checkOperand();
                     if (operand == 0) {
                         System.out.println("Not an operator");
+                        total=-1;
                         break;
                     }
 
@@ -63,6 +65,7 @@ public class Calculator {
                     flag = checkNumber();
                     if (!flag) {
                         System.out.println("Not an operator");
+                        total=-1;
                         break;
                     } else {
                         f2 = Integer.parseInt(calculation.get(0));
@@ -77,6 +80,7 @@ public class Calculator {
                     operand = checkOperand();
                     if (operand == 0) {
                         System.out.println("Not an operator");
+                        total=-1;
                         break;
                     }
 
@@ -85,6 +89,7 @@ public class Calculator {
                     flag = checkNumber();
                     if (!flag) {
                         System.out.println("Not an operator");
+                        total=-1;
                         break;
                     } else {
                         f2 = Integer.parseInt(calculation.get(0));
