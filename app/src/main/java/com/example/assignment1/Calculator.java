@@ -14,12 +14,12 @@ public class Calculator {
     int total;
 
     public Calculator() {
-        total = -1;
+        total = -433;
         calculation= new ArrayList<String>();
     }
     void push(String value) {
         if(!value.isEmpty()) {
-            calculation = new ArrayList<String>(Arrays.asList(value.split("")));
+            calculation = new ArrayList<String>(Arrays.asList(value.split(" ")));
         }
 
     }
@@ -31,13 +31,11 @@ public class Calculator {
         int operand=0;
         boolean flag;
         boolean flag2=true;
-        total = -1;
-
-
+        total = -433;
 
         if(calculation.isEmpty()) {
             Log.d("TESTING", "MOMOMO");
-            return -1;
+            return total;
         } else {
             while (!calculation.isEmpty()) {
                 System.out.println(calculation);
@@ -46,7 +44,7 @@ public class Calculator {
                     flag = checkNumber();
                     if (!flag) {
                         System.out.println("Not an operator");
-                        total =-1;
+                        total = -433;
                         break;
                     } else {
                         f1 = Integer.parseInt(calculation.get(0));
@@ -57,7 +55,7 @@ public class Calculator {
                     operand = checkOperand();
                     if (operand == 0) {
                         System.out.println("Not an operator");
-                        total=-1;
+                        total = -433;
                         break;
                     }
 
@@ -65,7 +63,7 @@ public class Calculator {
                     flag = checkNumber();
                     if (!flag) {
                         System.out.println("Not an operator");
-                        total=-1;
+                        total = -433;
                         break;
                     } else {
                         f2 = Integer.parseInt(calculation.get(0));
@@ -80,7 +78,7 @@ public class Calculator {
                     operand = checkOperand();
                     if (operand == 0) {
                         System.out.println("Not an operator");
-                        total=-1;
+                        total = -433;
                         break;
                     }
 
@@ -89,7 +87,7 @@ public class Calculator {
                     flag = checkNumber();
                     if (!flag) {
                         System.out.println("Not an operator");
-                        total=-1;
+                        total = -433;
                         break;
                     } else {
                         f2 = Integer.parseInt(calculation.get(0));
@@ -171,6 +169,7 @@ public class Calculator {
                 case "/":
                     calculation.remove(0);
                     return 4;
+
 
                 default:
                     break;

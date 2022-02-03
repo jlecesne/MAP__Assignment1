@@ -62,59 +62,59 @@ public class MainActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.btn0:
-                operation.setText(operation.getText()+"0");
+                operation.setText(operation.getText()+"0 ");
                 break;
 
             case R.id.btn1:
-                operation.setText(operation.getText()+"1");
+                operation.setText(operation.getText()+"1 ");
                 break;
 
             case R.id.btn2:
-                operation.setText(operation.getText()+"2");
+                operation.setText(operation.getText()+"2 ");
                 break;
 
             case R.id.btn3:
-                operation.setText(operation.getText()+"3");
+                operation.setText(operation.getText()+"3 ");
                 break;
 
             case R.id.btn4:
-                operation.setText(operation.getText()+"4");
+                operation.setText(operation.getText()+"4 ");
                 break;
 
             case R.id.btn5:
-                operation.setText(operation.getText()+"5");
+                operation.setText(operation.getText()+"5 ");
                 break;
 
             case R.id.btn6:
-                operation.setText(operation.getText()+"6");
+                operation.setText(operation.getText()+"6 ");
                 break;
 
             case R.id.btn7:
-                operation.setText(operation.getText()+"7");
+                operation.setText(operation.getText()+"7 ");
                 break;
 
             case R.id.btn8:
-                operation.setText(operation.getText()+"8");
+                operation.setText(operation.getText()+"8 ");
                 break;
 
             case R.id.btn9:
-                operation.setText(operation.getText()+"9");
+                operation.setText(operation.getText()+"9 ");
                 break;
 
             case R.id.btnPlus:
-                operation.setText(operation.getText()+"+");
+                operation.setText(operation.getText()+"+ ");
                 break;
 
             case R.id.btnMinus:
-                operation.setText(operation.getText()+"-");
+                operation.setText(operation.getText()+"- ");
                 break;
 
             case R.id.btnMultiply:
-                operation.setText(operation.getText()+"*");
+                operation.setText(operation.getText()+"* ");
                 break;
 
             case R.id.btnDivide:
-                operation.setText(operation.getText()+"/");
+                operation.setText(operation.getText()+"/ ");
                 break;
 
             case R.id.btnClr:
@@ -125,12 +125,13 @@ public class MainActivity extends AppCompatActivity
 
                 c1.push(operation.getText().toString());
 
-                int value = c1.calculate();
-                if(value==-1) {
+                Integer value = c1.calculate();
+                System.out.println(value + "hi");
+                if(value==-433) {
                     operation.setText(operation.getText()+"Not an Operator");
                 }
                 else {
-                    operation.setText(operation.getText()+"="+c1.total);
+                    operation.setText(operation.getText()+"= "+c1.total+ " ");
                 }
                 break;
         }
