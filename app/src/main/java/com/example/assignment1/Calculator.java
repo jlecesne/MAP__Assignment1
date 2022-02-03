@@ -4,9 +4,10 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import static java.lang.Math.*;
+import java.lang.*;
 
-import android.util.Log;
-import android.widget.TextView;
+
 
 public class Calculator {
 
@@ -21,6 +22,8 @@ public class Calculator {
         if(!value.isEmpty()) {
             calculation = new ArrayList<String>(Arrays.asList(value.split(" ")));
         }
+
+        System.out.println(calculation);
 
     }
 
@@ -124,6 +127,18 @@ public class Calculator {
             case 4:
                 return f1/f2;
 
+            case 5:
+                return f1%f2;
+
+            case 6:
+                return (int) Math.pow(f1, f2);
+
+            case 7:
+                return Math.max(f1, f2);
+
+            case 8:
+                return Math.min(f1, f2);
+
             default:
                 break;
 
@@ -169,6 +184,22 @@ public class Calculator {
                 case "/":
                     calculation.remove(0);
                     return 4;
+
+                case "%":
+                    calculation.remove(0);
+                    return 5;
+
+                case "pow":
+                    calculation.remove(0);
+                    return 6;
+
+                case "max":
+                    calculation.remove(0);
+                    return 7;
+
+                case "min":
+                    calculation.remove(0);
+                    return 8;
 
 
                 default:

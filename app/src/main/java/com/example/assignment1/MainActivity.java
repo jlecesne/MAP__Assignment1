@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity
 
     Calculator c1 = new Calculator();
     TextView operation;
+    boolean flag=true;
 
     Button num0;
     Button num1;
@@ -41,6 +43,11 @@ public class MainActivity extends AppCompatActivity
     Button equals;
     Button clr;
     Button advance;
+    Button mod;
+    Button pow;
+    Button max;
+    Button min;
+    LinearLayout scientific;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +55,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         setupListeners(savedInstanceState);
-
-
-
-
     }
 
 
@@ -119,6 +122,34 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.btnClr:
                 operation.setText("");
+                break;
+
+            case R.id.btnAdvanced:
+                if(flag) {
+                    scientific.setVisibility(View.VISIBLE);
+                    flag=false;
+                }
+                else {
+                    scientific.setVisibility(View.INVISIBLE);
+                    flag=true;
+                }
+
+                break;
+
+            case R.id.btnMod:
+                operation.setText(operation.getText()+"% ");
+                break;
+
+            case R.id.btnPow:
+                operation.setText(operation.getText()+"pow ");
+                break;
+
+            case R.id.btnMax:
+                operation.setText(operation.getText()+"Max ");
+                break;
+
+            case R.id.btnMin:
+                operation.setText(operation.getText()+"Min ");
                 break;
 
             case R.id.btnEqual:
@@ -194,6 +225,21 @@ public class MainActivity extends AppCompatActivity
 
         advance=findViewById(R.id.btnAdvanced);
         advance.setOnClickListener(this);
+
+        mod=findViewById(R.id.btnMod);
+        mod.setOnClickListener(this);
+
+        pow=findViewById(R.id.btnPow);
+        pow.setOnClickListener(this);
+
+        max=findViewById(R.id.btnMax);
+        max.setOnClickListener(this);
+
+        min=findViewById(R.id.btnMin);
+        min.setOnClickListener(this);
+
+        scientific =  findViewById(R.id.layoutScientific);
+
 
         operation = (TextView) findViewById(R.id.calculation);
     }
